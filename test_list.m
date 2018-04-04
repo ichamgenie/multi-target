@@ -1,0 +1,13 @@
+list3_1 = {[1,1],[1,2]};
+list3_2 = {[2,1],[2,2]};
+list3_3 = {};
+list2 = {};
+list2 = listPush(list2, list3_2);
+list2 = listPush(list2, list3_1);
+list1 = {};
+list1 = listPush(list1, list2);
+tmp = cellFind(list3_1, [1,1]);
+tmp2 = isPointConnectToBlock(list3_1, [2,2]);
+tmp3 = isPointInBlock(list3_1, [1,3]);
+tmp4 = isBlockConnent(list3_3, list3_2);
+tmp5 = isBlockConnent(list3_2, list3_3);
