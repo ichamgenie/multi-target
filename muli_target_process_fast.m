@@ -1,16 +1,13 @@
 path = 'D:\\code\\matlab\\data\\20180308\\12\\12-2_2_g_p\\';%原始图片文件夹
-gifFrameRate = 25.27;%gif帧率
-rate = 1;%慢放倍数
 images = dir(fullfile([path,'*.png']));
 fileCount = length(images);
-dFrameRate = 25.27;
-step = round(dFrameRate/(gifFrameRate*rate));
+step = 1;
 
 index = 1;
 list1 = {};
 while(index<=fileCount)
     blockList = {};
-    image = get_binaryzation(imread([path,images(index).name]));
+    image = get_binaryzation(imread([path,images(index).name]), 0);%阈值
     [nH,nW] = size(image);
     for j = 1:nH
         for i = 1:nW
@@ -29,6 +26,7 @@ while(index<=fileCount)
     list1{listSize(list1)+1} = blockList;
     index = index+step
 end
+save('list1.mat','list1');
 imshow(image);
 
 

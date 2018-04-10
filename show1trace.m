@@ -1,17 +1,18 @@
+dataList = importdata('dataList.mat');
 nH = 480;
 nW = 720;
 maxBlockNum = 0;
-for n = 1:listSize(list1)
-    if(listSize(list1{n})>maxBlockNum)
-        maxBlockNum = listSize(list1{n});
+for n = 1:listSize(dataList)
+    if(listSize(dataList{n})>maxBlockNum)
+        maxBlockNum = listSize(dataList{n});
     end
 end
-for n = 1:listSize(list1)
+for n = 1:listSize(dataList)
     image_recover = uint8(zeros(nH,nW,3));
-    for i = 1:listSize(list1{n})
-        tmmpBlock = list1{n}{i};
+    for i = 1:listSize(dataList{n})
+        tmmpBlock = dataList{n}{i}.pxList;
         for k = 1:maxBlockNum
-            if(list1_2{n}{i}{listSize(list1_2{n}{i})}==k)
+            if(dataList{n}{i}.id==k)
                 H = round(360.0*double(k)/double(maxBlockNum));
                 S = 1.0;
                 V = 1.0;
